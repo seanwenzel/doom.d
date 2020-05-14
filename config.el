@@ -59,3 +59,10 @@
 (use-package ivy-yasnippet
   :config
   (map! :leader :desc "Snippet" "i s" #'ivy-yasnippet))
+
+(use-package avy
+  :config
+  (map! :leader
+        "j j" #'evil-avy-goto-char-timer
+        "j w" #'evil-avy-goto-word-1
+        "j l" #'evil-avy-goto-line))
