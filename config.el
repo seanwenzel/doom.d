@@ -56,6 +56,7 @@
   :custom
   evil-disable-insert-state-bindings t)
 
+;; This shows duplicate snippets for some reason, even though company-yasnippet doesn't
 (use-package ivy-yasnippet
   :config
   (map! :leader :desc "Snippet" "i s" #'ivy-yasnippet))
