@@ -35,7 +35,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
 
-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -52,3 +51,11 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+
+(use-package evil
+  :custom
+  evil-disable-insert-state-bindings t)
+
+(use-package ivy-yasnippet
+  :config
+  (map! :leader :desc "Snippet" "i s" #'ivy-yasnippet))
