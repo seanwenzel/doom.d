@@ -64,3 +64,7 @@
   (map! :leader :desc "Snippet" "i s" #'ivy-yasnippet))
 
 (map! :leader :desc "M-x" "SPC" #'counsel-M-x)
+
+;; Swap : and ;
+(map! :nm ";" 'evil-ex
+      :nm ":" 'evil-snipe-repeat)
