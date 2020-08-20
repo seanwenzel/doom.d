@@ -23,7 +23,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-monokai-pro)
+(setq doom-theme 'doom-molokai)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -58,6 +58,8 @@
   :custom
   evil-disable-insert-state-bindings t)
 
+(setq doom-localleader-key ",")
+
 ;; This shows duplicate snippets for some reason, even though company-yasnippet doesn't
 (use-package ivy-yasnippet
   :config
@@ -66,5 +68,5 @@
 (map! :leader :desc "M-x" "SPC" #'counsel-M-x)
 
 ;; Swap : and ;
-(map! :nm ";" 'evil-ex
-      :nm ":" 'evil-snipe-repeat)
+(map! :nvm ";" 'evil-ex
+      :nvm ":" 'evil-snipe-repeat)
