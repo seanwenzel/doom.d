@@ -48,3 +48,4 @@
 
 (package! ivy-yasnippet)
 (package! rmsbolt)
+(package! vlf)

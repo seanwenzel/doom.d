@@ -8,6 +8,17 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Sean Wenzel")
 
+(setq-default
+ delete-by-moving-to-trash t ; Delete files to trash
+ tab-width 4 ; Set width for tabs
+ x-stretch-cursor t ; Stretch cursor to the glyph width
+ )
+
+(setq undo-limit 80000000               ; Raise undo-limit to 80Mb
+      evil-want-fine-undo t             ; By default while in insert all changes are one big blob. Be more granular.
+      truncate-string-ellipsis "…"      ; Unicode ellipsis are nicer than "..." and saves space
+      )
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -37,6 +48,17 @@
 
 (global-subword-mode t)
 
+
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+
+;; Prompt for buffer selection on window split
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (+ivy/switch-buffer))
+
+(setq +ivy-buffer-preview t)
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -57,6 +79,10 @@
 (use-package evil
   :custom
   evil-disable-insert-state-bindings t)
+
+;; Very Large Files Mode lazy loading
+(use-package! vlf-setup
+  :defer-incrementally vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff vlf)
 
 (setq doom-localleader-key ",")
 
