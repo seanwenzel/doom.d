@@ -14,6 +14,8 @@
  x-stretch-cursor t ; Stretch cursor to the glyph width
  )
 
+(setq-default history-length 1000)
+
 (setq undo-limit 80000000               ; Raise undo-limit to 80Mb
       evil-want-fine-undo t             ; By default while in insert all changes are one big blob. Be more granular.
       truncate-string-ellipsis "…"      ; Unicode ellipsis are nicer than "..." and saves space
@@ -91,6 +93,13 @@
   :config
   (map! :leader :desc "Snippet" "i s" #'ivy-yasnippet))
 
+(after! company
+  (setq company-idle-delay 0.25
+        company-minimum-prefix-length 2)
+  (setq company-show-numbers t) ;; Select a selection with M-number
+(add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+
+;; Keybindings
 (map! :leader :desc "M-x" "SPC" #'counsel-M-x)
 
 ;; Swap : and ;
