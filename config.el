@@ -3,6 +3,9 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+(if (eq system-type 'windows-nt)
+    (load-file "windows.el")
+    )
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -53,11 +56,6 @@
 
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
-
-;; Prompt for buffer selection on window split
-(defadvice! prompt-for-buffer (&rest _)
-  :after '(evil-window-split evil-window-vsplit)
-  (+ivy/switch-buffer))
 
 (setq +ivy-buffer-preview t)
 
