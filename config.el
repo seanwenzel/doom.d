@@ -53,7 +53,6 @@
 
 (global-subword-mode t)
 
-
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 
