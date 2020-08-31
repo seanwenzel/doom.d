@@ -94,7 +94,7 @@
   (setq company-idle-delay 0.25
         company-minimum-prefix-length 2)
   (setq company-show-numbers t) ;; Select a selection with M-number
-  (add-hook 'shell-mode-hook ('company-mode -1))
+  ;; (add-hook 'shell-mode-hook ('company-mode -1))
   (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
 
 (after! org
