@@ -49,3 +49,4 @@
 (package! ivy-yasnippet)
 (package! rmsbolt)
 (package! vlf)
+(package! import-js)

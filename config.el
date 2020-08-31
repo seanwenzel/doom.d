@@ -105,3 +105,7 @@
 ;; Swap : and ;
 (map! :nvm ";" 'evil-ex
       :nvm ":" 'evil-snipe-repeat)
+
+(map! :after import-js
+      :map js2-mode-map
+      :localleader :desc "import-js" "i" #'import-js-import)
