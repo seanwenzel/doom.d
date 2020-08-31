@@ -4,7 +4,7 @@
 ;; sync' after modifying this file!
 
 (if (eq system-type 'windows-nt)
-    (load-file "windows.el")
+    (load-file (concat doom-private-dir "windows.el"))
     )
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email

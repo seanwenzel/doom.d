@@ -11,5 +11,5 @@
       (let ((shell-file-name "cmd.exe"))
             (shell "*cmd.exe*")))
 
-(load-file "powershell.el")
+(load-file (concat doom-private-dir "powershell.el"))
 (autoload 'powershell "powershell" "Run powershell as a shell within emacs." t)
