@@ -98,6 +98,9 @@
   (add-hook 'shell-mode-hook ('company-mode -1))
   (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
 
+(after! org
+  (add-hook 'org-mode-hook 'turn-on-auto-fill))
+
 ;; Keybindings
 (map! :leader :desc "M-x" "SPC" #'counsel-M-x)
 
