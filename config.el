@@ -3,6 +3,9 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+(if (eq system-type 'windows-nt)
+    (load-file (concat doom-private-dir "windows.el"))
+    )
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -50,14 +53,8 @@
 
 (global-subword-mode t)
 
-
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
-
-;; Prompt for buffer selection on window split
-(defadvice! prompt-for-buffer (&rest _)
-  :after '(evil-window-split evil-window-vsplit)
-  (+ivy/switch-buffer))
 
 (setq +ivy-buffer-preview t)
 
@@ -97,7 +94,11 @@
   (setq company-idle-delay 0.25
         company-minimum-prefix-length 2)
   (setq company-show-numbers t) ;; Select a selection with M-number
-(add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+  (add-hook 'shell-mode-hook ('company-mode -1))
+  (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+
+(after! org
+  (add-hook 'org-mode-hook 'turn-on-auto-fill))
 
 ;; Keybindings
 (map! :leader :desc "M-x" "SPC" #'counsel-M-x)
