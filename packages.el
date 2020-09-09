@@ -50,6 +50,3 @@
 (package! rmsbolt)
 (package! vlf)
 (package! import-js)
-
-;; TODO: Get this to work
-(package! jest-snippets :recipe (:host github :repo "sei40kr/jest-snippets"))
