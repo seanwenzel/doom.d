@@ -129,3 +129,7 @@
        (:prefix ("j" . "journal")
         :desc "New journal entry" "j" #'org-journal-new-entry
         :desc "Search journal entry" "s" #'org-journal-search)))
+
+(map! :leader
+      (:prefix-map ("g" . "git")
+        :desc "Magit status" "s" #'magit-status))
