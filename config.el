@@ -57,6 +57,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+(setq org-agenda-files '("~/org/"))
 
 (setq projectile-project-search-path '("~/projects/" "~/repositories/"))
 
@@ -136,14 +137,13 @@
        :desc "Jump to char 2" "J" #'evil-avy-goto-char-2
        :desc "Jump to word" "w" #'evil-avy-goto-word-or-subword-1))
 
-(setq org-agenda-files '("~/org/"))
 
-;; ;; This may not be necessary since Doom already has an analogue for this functionality
-;; (setq org-projectile-projects-directory "~/org/projects/")
-;; (use-package! org-projectile
-;;   :config
-;;   (org-projectile-per-project)
-;;   (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
-;;   (map! :leader
-;;         (:prefix "n"
-;;          :desc "projectile-project-complete-read" "p" #'org-projectile-project-todo-completing-read)))
+;; This may not be necessary since Doom already has an analogue for this functionality
+(setq org-projectile-projects-directory "~/org/projects/")
+(use-package! org-projectile
+  :config
+  (org-projectile-per-project)
+  (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+  (map! :leader
+        (:prefix "n"
+         :desc "projectile-project-complete-read" "p" #'org-projectile-project-todo-completing-read)))
