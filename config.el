@@ -123,3 +123,9 @@
 (map! :after import-js
       :map js2-mode-map
       :localleader :desc "import-js" "i" #'import-js-import)
+
+(map! :leader
+      (:prefix-map ("a" . "applications")
+       (:prefix ("j" . "journal")
+        :desc "New journal entry" "j" #'org-journal-new-entry
+        :desc "Search journal entry" "s" #'org-journal-search)))
