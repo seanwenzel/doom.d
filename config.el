@@ -125,12 +125,6 @@
       :localleader :desc "import-js" "i" #'import-js-import)
 
 (map! :leader
-      (:prefix-map ("a" . "applications")
-       (:prefix ("j" . "journal")
-        :desc "New journal entry" "j" #'org-journal-new-entry
-        :desc "Search journal entry" "s" #'org-journal-search)))
-
-(map! :leader
       (:prefix-map ("g" . "git")
         :desc "Magit status" "s" #'magit-status))
 
@@ -141,3 +135,14 @@
        :desc "Jump to char" "j" #'evil-avy-goto-char
        :desc "Jump to char 2" "J" #'evil-avy-goto-char-2
        :desc "Jump to word" "w" #'evil-avy-goto-word-or-subword-1))
+
+(setq org-projectile-projects-directory "~/org/projects/")
+(setq org-agenda-files '("~/org/"))
+
+(use-package! org-projectile
+  :config
+  (org-projectile-per-project)
+  (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
+  (map! :leader
+        (:prefix "n"
+         :desc "projectile-project-complete-read" "p" #'org-projectile-project-todo-completing-read)))

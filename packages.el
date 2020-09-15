@@ -47,6 +47,7 @@
 ;(package! builtin-package :recipe (:branch "develop"))
 
 (package! ivy-yasnippet)
+(package! org-projectile)
 (package! rmsbolt)
 (package! vlf)
 (package! import-js)
