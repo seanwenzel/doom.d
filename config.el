@@ -147,5 +147,5 @@
         (:prefix "n"
          :desc "projectile-project-complete-read" "p" #'org-projectile-project-todo-completing-read)))
 
-; Hybrid doesn't ignore directories using WSL
+; Hybrid doesn't ignore directories using WSL.
 (setq projectile-indexing-method 'native)
