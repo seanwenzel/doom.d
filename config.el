@@ -150,3 +150,5 @@
 
 ; Hybrid doesn't ignore directories using WSL
 (setq projectile-indexing-method 'native)
+
+(setq-hook! 'js2-mode-hook +format-with-lsp nil)
