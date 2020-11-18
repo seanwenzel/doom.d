@@ -97,8 +97,6 @@
 (use-package! vlf-setup
   :defer-incrementally vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff vlf)
 
-(setq doom-localleader-key ",")
-
 ;; This shows duplicate snippets for some reason, even though company-yasnippet doesn't
 (use-package ivy-yasnippet
   :config
