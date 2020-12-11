@@ -132,7 +132,7 @@
       (:prefix-map ("j" . "jump")
        :desc "Jump to line" "l" #'evil-avy-goto-line
        :desc "Jump to char" "j" #'evil-avy-goto-char
-       :desc "Jump to char 2" "J" #'evil-avy-goto-char-2
+       :desc "Jump to char 2" "s" #'evil-avy-goto-char-2
        :desc "Jump to word" "w" #'evil-avy-goto-word-or-subword-1))
 
 
