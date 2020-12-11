@@ -146,6 +146,9 @@
         (:prefix "n"
          :desc "projectile-project-complete-read" "p" #'org-projectile-project-todo-completing-read)))
 
+(use-package! magit
+  :bind ((("C-c g" . magit-file-dispatch))))
+
 ; Hybrid doesn't ignore directories using WSL
 (setq projectile-indexing-method 'native)
 
