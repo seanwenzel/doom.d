@@ -6,6 +6,15 @@
 ;; For native compilation
 (setq comp-speed 2)
 
+;; Make command key on mac be Meta
+(setq ns-command-modifier 'meta)
+
+;; Make option/alt ket on mac be Alt
+(setq ns-alternate-modifier 'alt)
+
+;; Set re-builder syntax to avoid excessive backslashes
+(setq reb-re-syntax 'string)
+
 (when (boundp 'comp-eln-load-path)
   (let ((eln-cache-dir (expand-file-name "eln-cache/" user-emacs-directory))
         (find-exec (executable-find "find")))
