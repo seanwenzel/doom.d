@@ -14,6 +14,11 @@
 (load-file (concat doom-private-dir "powershell.el"))
 (autoload 'powershell "powershell" "Run powershell as a shell within emacs." t)
 
+;; (setq ahk-syntax-directory "PATHTO/AutoHotkey/Extras/Editors/Syntax/")
+(load-file (concat doom-private-dir "ahk-mode.el"))
+(add-to-list 'auto-mode-alist '("\\.ahk$" . ahk-mode))
+(autoload 'ahk-mode "ahk-mode")
+
 ;; Windows performance tweaks for irony-mode
 ;;
 (when (boundp 'w32-pipe-read-delay)
