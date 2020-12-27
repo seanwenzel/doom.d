@@ -6,6 +6,15 @@
 ;; For native compilation
 (setq comp-speed 2)
 
+;; Make command key on mac be Meta
+(setq ns-command-modifier 'meta)
+
+;; Make option/alt ket on mac be Alt
+(setq ns-alternate-modifier 'alt)
+
+;; Set re-builder syntax to avoid excessive backslashes
+(setq reb-re-syntax 'string)
+
 (when (boundp 'comp-eln-load-path)
   (let ((eln-cache-dir (expand-file-name "eln-cache/" user-emacs-directory))
         (find-exec (executable-find "find")))
@@ -47,7 +56,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 12))
+(setq doom-font (font-spec :family "Fira Code" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -132,7 +141,7 @@
       (:prefix-map ("j" . "jump")
        :desc "Jump to line" "l" #'evil-avy-goto-line
        :desc "Jump to char" "j" #'evil-avy-goto-char
-       :desc "Jump to char 2" "J" #'evil-avy-goto-char-2
+       :desc "Jump to char 2" "s" #'evil-avy-goto-char-2
        :desc "Jump to word" "w" #'evil-avy-goto-word-or-subword-1))
 
 
@@ -145,6 +154,9 @@
   (map! :leader
         (:prefix "n"
          :desc "projectile-project-complete-read" "p" #'org-projectile-project-todo-completing-read)))
+
+(use-package! magit
+  :bind ((("C-c g" . magit-file-dispatch))))
 
 ; Hybrid doesn't ignore directories using WSL
 (setq projectile-indexing-method 'native)
