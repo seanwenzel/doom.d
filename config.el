@@ -162,3 +162,5 @@
 ;; (setq projectile-indexing-method 'native)
 
 (setq-hook! 'js2-mode-hook +format-with-lsp nil)
+
+(setq +latex-viewers '(pdf-tools))
