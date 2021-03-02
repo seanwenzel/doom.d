@@ -164,3 +164,10 @@
 (setq-hook! 'js2-mode-hook +format-with-lsp nil)
 
 (setq +latex-viewers '(pdf-tools))
+
+;; Interpret ansi escape sequences in log files
+(require 'ansi-color)
+(defun display-ansi-colors ()
+  (interactive)
+  (ansi-color-apply-on-region (point-min) (point-max)))
+(add-to-list 'auto-mode-alist '("\\.log\\'" . display-ansi-colors))
