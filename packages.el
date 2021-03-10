@@ -51,3 +51,4 @@
 (package! rmsbolt)
 (package! vlf)
 (package! import-js)
+(package! robot-mode)
