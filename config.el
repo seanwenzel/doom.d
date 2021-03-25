@@ -6,15 +6,6 @@
 ;; For native compilation
 (setq comp-speed 2)
 
-;; Make command key on mac be Meta
-(setq ns-command-modifier 'meta)
-
-;; Make option/alt ket on mac be Alt
-(setq ns-alternate-modifier 'alt)
-
-;; Set re-builder syntax to avoid excessive backslashes
-(setq reb-re-syntax 'string)
-
 (when (boundp 'comp-eln-load-path)
   (let ((eln-cache-dir (expand-file-name "eln-cache/" user-emacs-directory))
         (find-exec (executable-find "find")))
@@ -26,8 +17,7 @@
                     "-name" "*.eln" "-size" "0" "-delete"))))
 
 (if (eq system-type 'windows-nt)
-    (load-file (concat doom-private-dir "windows.el"))
-    )
+    (load-file (concat doom-private-dir "windows.el")))
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -57,8 +47,6 @@
  make-backup-files nil                  ; stop creating backup~ files
  )
 
-
-
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
@@ -79,8 +67,6 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-
-(setq projectile-project-search-path '("~/projects/" "~/repositories/"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -108,7 +94,7 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
-(use-package evil
+(use-package! evil
   :custom
   evil-disable-insert-state-bindings t)
 
@@ -131,6 +117,10 @@
 (after! org
   (add-hook 'org-mode-hook 'turn-on-auto-fill))
 
+(after! projectile
+  :config
+  (setq projectile-project-search-path '("~/projects/" "~/repositories/")))
+
 ;; Keybindings
 (map! :leader :desc "M-x" "SPC" #'counsel-M-x)
 
@@ -140,7 +130,7 @@
 
 (map! :leader
       (:prefix-map ("g" . "git")
-        :desc "Magit status" "s" #'magit-status))
+       :desc "Magit status" "s" #'magit-status))
 
 (setq avy-all-windows 'all-frames)
 (map! :leader
@@ -150,11 +140,10 @@
        :desc "Jump to char 2" "s" #'evil-avy-goto-char-2
        :desc "Jump to word" "w" #'evil-avy-goto-word-or-subword-1))
 
-
 (use-package! magit
   :bind ((("C-c g" . magit-file-dispatch))))
 
-; Hybrid doesn't ignore directories using WSL
+                                        ; Hybrid doesn't ignore directories using WSL
 ;; (setq projectile-indexing-method 'native)
 
 ;; Interpret ansi escape sequences in log files
