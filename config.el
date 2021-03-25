@@ -34,17 +34,30 @@
 (setq user-full-name "Sean Wenzel")
 
 (setq-default
- delete-by-moving-to-trash t ; Delete files to trash
- tab-width 4 ; Set width for tabs
- x-stretch-cursor t ; Stretch cursor to the glyph width
+ ;; General Defaults
+ confirm-kill-emacs nil                 ; Don't have to confirm to kill emacs
+ confirm-kill-processes nil             ; Don't have to confirm to kill running processes
+ cursor-in-non-selected-windows nil     ; Hide the cursor in inactive windows
+ delete-by-moving-to-trash nil          ; Delete files without moving to trash
+ fill-column 80                         ; Set width for automatic line breaks
+ indent-tabs-mode nil                   ; Stop using tabs to indent
+ inhibit-startup-message t              ; Don't show the startup message
+ inhibit-startup-screen t               ; inhibit useless and old-school startup screen
+ initial-scratch-message nil            ; Empty scratch buffer
+ line-spacing nil                       ; I sometimes like some line spacing
+ ring-bell-function 'ignore             ; silent bell when you make a mistake
+ sentence-end-double-space nil          ; End a sentence after a dot and a space
+ show-trailing-whitespace nil           ; Display trailing whitespaces
+ tab-width 4                            ; Set width for tabs
+ x-stretch-cursor t                     ; Stretch cursor to the width of the underlying glyph
+
+ ;; Backup File Defaults
+ auto-save-default nil                  ; stop creating #autosave# files
+ create-lockfiles nil                   ; stop creating .# files
+ make-backup-files nil                  ; stop creating backup~ files
  )
 
-(setq-default history-length 1000)
 
-(setq undo-limit 80000000               ; Raise undo-limit to 80Mb
-      evil-want-fine-undo t             ; By default while in insert all changes are one big blob. Be more granular.
-      truncate-string-ellipsis "…"      ; Unicode ellipsis are nicer than "..." and saves space
-      )
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -61,12 +74,11 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'my-monokai-pro)
+(setq doom-theme 'doom-monokai-pro)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-(setq org-agenda-files '("~/org/"))
 
 (setq projectile-project-search-path '("~/projects/" "~/repositories/"))
 
@@ -78,8 +90,6 @@
 
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
-
-(setq +ivy-buffer-preview t)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -128,10 +138,6 @@
 (map! :nvm ";" 'evil-ex
       :nvm ":" 'evil-snipe-repeat)
 
-(map! :after import-js
-      :map js2-mode-map
-      :localleader :desc "import-js" "i" #'import-js-import)
-
 (map! :leader
       (:prefix-map ("g" . "git")
         :desc "Magit status" "s" #'magit-status))
@@ -145,25 +151,11 @@
        :desc "Jump to word" "w" #'evil-avy-goto-word-or-subword-1))
 
 
-;; This may not be necessary since Doom already has an analogue for this functionality
-(setq org-projectile-projects-directory "~/org/projects/")
-(use-package! org-projectile
-  :config
-  (org-projectile-per-project)
-  (setq org-agenda-files (append org-agenda-files (org-projectile-todo-files)))
-  (map! :leader
-        (:prefix "n"
-         :desc "projectile-project-complete-read" "p" #'org-projectile-project-todo-completing-read)))
-
 (use-package! magit
   :bind ((("C-c g" . magit-file-dispatch))))
 
 ; Hybrid doesn't ignore directories using WSL
 ;; (setq projectile-indexing-method 'native)
-
-(setq-hook! 'js2-mode-hook +format-with-lsp nil)
-
-(setq +latex-viewers '(pdf-tools))
 
 ;; Interpret ansi escape sequences in log files
 (require 'ansi-color)
