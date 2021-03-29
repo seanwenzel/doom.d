@@ -23,6 +23,11 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Sean Wenzel")
 
+(setq mac-option-key-is-meta nil
+      mac-command-key-is-meta t
+      mac-command-modifier 'meta
+      mac-option-modifier 'none)
+
 (setq-default
  ;; General Defaults
  confirm-kill-emacs nil                 ; Don't have to confirm to kill emacs
