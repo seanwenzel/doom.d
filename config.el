@@ -28,6 +28,9 @@
       mac-command-modifier 'meta
       mac-option-modifier 'none)
 
+;; Revert (update) buffers automatically when underlying files are changed externally
+(global-auto-revert-mode t)
+
 (setq-default
  ;; General Defaults
  confirm-kill-emacs nil                 ; Don't have to confirm to kill emacs
