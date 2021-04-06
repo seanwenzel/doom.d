@@ -23,6 +23,12 @@
 ;; clients, file templates and snippets.
 (setq user-full-name "Sean Wenzel")
 
+(when window-system
+  (menu-bar-mode -1)
+  (toggle-scroll-bar -1)
+  (tool-bar-mode -1)
+  (blink-cursor-mode -1))
+
 (setq mac-option-key-is-meta nil
       mac-command-key-is-meta t
       mac-command-modifier 'meta
